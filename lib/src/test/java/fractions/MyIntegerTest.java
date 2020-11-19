@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class MyIntegerTest {
-  @Test void testLowestCommonDenominator() {
-    assertEquals(MyInteger.lowestCommonDenominator(30, 10), 10, "returns correctly for bigger % smaller == 0");
-    assertEquals(MyInteger.lowestCommonDenominator(30, 20), 10, "returns correctly for 30 and 20");
+  @Test void testGreatestCommonDenominator() {
+    assertEquals(10, MyInteger.greatestCommonDenominator(30, 10), "returns correctly for bigger % smaller == 0");
+    assertEquals(10, MyInteger.greatestCommonDenominator(30, 20), "returns correctly for 30 and 20");
   }
 
   @Test void testIsMultiple() {
@@ -15,12 +15,16 @@ class MyIntegerTest {
   }    
 
   @Test void testBiggest() {
-    assertEquals(MyInteger.biggest(20, 30), 30, "30 is bigger than 20");
-    assertNotEquals(MyInteger.biggest(20, 30), 20, "20 is NOT bigger than 30");
+    assertEquals(30, MyInteger.biggest(20, 30), "30 is bigger than 20");
+    assertNotEquals(20, MyInteger.biggest(20, 30), "20 is NOT bigger than 30");
   }
 
   @Test void testSmallest() {
-    assertEquals(MyInteger.smallest(20, 30), 20, "30 is NOT smaller than 20");
-    assertNotEquals(MyInteger.smallest(20, 30), 30, "20 is smaller than 30");
+    assertEquals(20, MyInteger.smallest(20, 30), "30 is NOT smaller than 20");
+    assertNotEquals(30, MyInteger.smallest(20, 30), "20 is smaller than 30");
+  }
+
+  @Test void testLeastCommonMultiple() {
+    assertEquals(300, MyInteger.leastCommonMultiple(25, 60), "should find the least common multiple between two numbers");
   }
 }

@@ -56,6 +56,18 @@ public class Fraction {
     }
   }
 
+  public void addTo(int a) {
+    a *= this.denominator;
+    this.numerator += a;
+  }
+
+  public void addTo(Fraction a) {
+    int sumDenominator = MyInteger.leastCommonMultiple(this.denominator, a.denominator);
+    this.numerator = this.numerator * (sumDenominator / this.denominator) + a.numerator * (sumDenominator / a.denominator);
+    this.denominator = sumDenominator;
+    reduce();
+  }
+
   public void invert() {
     if(this.numerator == 0) {
       this.valid = false;
@@ -72,7 +84,7 @@ public class Fraction {
 
   private void reduce() {
     if(this.isValid()) {
-      int dividend = MyInteger.lowestCommonDenominator(this.numerator, this.denominator);
+      int dividend = MyInteger.greatestCommonDenominator(this.numerator, this.denominator);
       if(dividend != 0) {
         this.numerator /= dividend;
         this.denominator /= dividend;

@@ -50,6 +50,17 @@ class FractionTest {
       assertFalse(fraction3.isValid(), "should set valid flag to false when divide by zero is attempted");
     }
 
+    @Test void testAddition() {
+      Fraction fraction1 = new Fraction("1/2");
+      fraction1.addTo(2);
+      assertEquals("5/2", fraction1.toString(), "should correctly add whole number to fraction");
+
+      Fraction fraction2 = new Fraction("3/25");
+      Fraction fraction3 = new Fraction("7/30");
+      fraction2.addTo(fraction3);
+      assertEquals("53/150", fraction2.toString(), "should correctly add another fraction to fraction");
+    }
+
     @Test void testInvert() {
       Fraction fraction1 = new Fraction("2/3");
       fraction1.invert();

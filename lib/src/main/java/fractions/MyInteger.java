@@ -1,7 +1,7 @@
 package fractions;
 
 public class MyInteger {
-  public static int lowestCommonDenominator(int a, int b) {
+  public static int greatestCommonDenominator(int a, int b) {
     int answer = 1;
     int bigger = biggest(a, b);
     int smaller = smallest(a, b);
@@ -32,5 +32,20 @@ public class MyInteger {
 
   public static int smallest(int a, int b) {
     return a < b ? a : b;
+  }
+
+  public static int leastCommonMultiple(int a, int b) {
+    int smaller = smallest(a, b);
+    int larger = biggest(a, b);
+    int answer = 0;
+
+    for(int i = smaller; i <= smaller * larger; i += smaller) {
+      if (i % larger == 0 || i == smaller * larger) {
+        answer = i;
+        i = smaller * larger + 1;
+      }
+    }
+
+    return answer;
   }
 }
