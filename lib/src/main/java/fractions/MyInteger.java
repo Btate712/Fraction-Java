@@ -35,8 +35,8 @@ public class MyInteger {
   }
 
   public static int leastCommonMultiple(int a, int b) {
-    int smaller = smallest(a, b);
-    int larger = biggest(a, b);
+    int smaller = smallest(absoluteValue(a), absoluteValue(b));
+    int larger = biggest(absoluteValue(a), absoluteValue(b));
     int answer = 0;
 
     for(int i = smaller; i <= smaller * larger; i += smaller) {
@@ -47,5 +47,9 @@ public class MyInteger {
     }
 
     return answer;
+  }
+
+  public static int absoluteValue(int a) {
+    return a >= 0 ? a : a * -1;
   }
 }

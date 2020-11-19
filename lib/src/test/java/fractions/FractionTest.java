@@ -26,6 +26,14 @@ class FractionTest {
       assertEquals("5/6", fraction.toString(), "should correctly return string representation of fraction");
     }
 
+    @Test void testMixedNumberString() {
+      Fraction fraction1 = new Fraction("24/5");
+      assertEquals("4 4/5", fraction1.toMixedNumberString(), "should correctly return mixed number representation of fraction with a whole number component");
+    
+      Fraction fraction2 = new Fraction("4/5");
+      assertEquals("4/5", fraction2.toMixedNumberString(), "should correctly return mixed number representation of fraction without a whole number component");
+    }
+
     @Test void testMultiplication() {
       Fraction fraction1 = new Fraction(4, 9);
       fraction1.multiplyBy(2);
@@ -34,6 +42,11 @@ class FractionTest {
       Fraction fraction2 = new Fraction(1, 6);
       fraction2.multiplyBy(2);
       assertEquals("1/3", fraction2.toString(), "should correctly multiply when reduction is required");
+
+      Fraction fraction3 = new Fraction("2/3");
+      Fraction fraction4 = new Fraction("1/10");
+      fraction3.multiplyBy(fraction4);
+      assertEquals("1/15", fraction3.toString(), "should correctly multiply fractions");
     }
 
     @Test void testDivision() {
@@ -59,6 +72,17 @@ class FractionTest {
       Fraction fraction3 = new Fraction("7/30");
       fraction2.addTo(fraction3);
       assertEquals("53/150", fraction2.toString(), "should correctly add another fraction to fraction");
+    }
+
+    @Test void testSubtraction() {
+      Fraction fraction1 = new Fraction("24/5");
+      fraction1.subtract(2);
+      assertEquals("14/5", fraction1.toString(), "should correctly subtract whole numbers from fraction");
+
+      Fraction fraction2 = new Fraction("3/4");
+      Fraction fraction3 = new Fraction("1/7");
+      fraction2.subtract(fraction3);
+      assertEquals("17/28", fraction2.toString(), "should correctly subtract another fraction from fraction");
     }
 
     @Test void testInvert() {

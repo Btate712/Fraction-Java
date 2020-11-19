@@ -47,6 +47,17 @@ public class Fraction {
     reduce();
   }
 
+  public void multiplyBy(Fraction a) {
+    this.numerator *= a.numerator;
+    this.denominator *= a.denominator;
+     
+    if(this.denominator == 0) {
+      this.valid = false;
+    }
+    
+    reduce();
+  }
+
   public void divideBy(int a) {
     if (a == 0) {
       this.valid = false;
@@ -68,6 +79,16 @@ public class Fraction {
     reduce();
   }
 
+  public void subtract(int a) {
+    a *= -1;
+    addTo(a);
+  }
+
+  public void subtract(Fraction a) {
+    a.multiplyBy(-1);
+    addTo(a);
+  }
+
   public void invert() {
     if(this.numerator == 0) {
       this.valid = false;
@@ -80,6 +101,20 @@ public class Fraction {
 
   public String toString() {
     return String.format("%d/%d", numerator, denominator);
+  }
+
+  public String toMixedNumberString() {
+    int wholeNumber = this.numerator / this.denominator;
+    String returnString = "";
+
+    if(wholeNumber != 0) {
+      returnString = String.format("%d ", wholeNumber);
+      returnString += String.format("%d/%d", this.numerator % this.denominator, this.denominator);
+    } else {
+      returnString = this.toString();
+    }
+
+    return returnString;
   }
 
   private void reduce() {
