@@ -12,6 +12,13 @@ class FractionTest {
       Fraction fraction2 = new Fraction(300, 600);
       assertEquals(1, fraction2.getNumerator(), "should return correct numerator for fraction that requires reduction");
       assertEquals(2, fraction2.getDenominator(), "should return correct denominator for fraction that requires reduction");
+
+      Fraction fraction3 = new Fraction("2 / 3");
+      assertEquals(2, fraction3.getNumerator(), "should correctly assign numerator when initialized with a valid string");
+      assertEquals(3, fraction3.getDenominator(), "should correctly assign denominator when initialized with a valid string");
+
+      Fraction fraction4 = new Fraction("invalid fraction");
+      assertFalse(fraction4.isValid(), "should set valid flag to false if invalid input is used to initialize fraction");
     }
 
     @Test void testStringOutput() {
@@ -37,5 +44,9 @@ class FractionTest {
       Fraction fraction2 = new Fraction(1, 6);
       fraction2.divideBy(2);
       assertEquals("1/12", fraction2.toString(), "should correctly divide without the need for reduction");
+
+      Fraction fraction3 = new Fraction(1, 2);
+      fraction3.divideBy(0);
+      assertFalse(fraction3.isValid(), "should set valid flag to false when divide by zero is attempted");
     }
 }

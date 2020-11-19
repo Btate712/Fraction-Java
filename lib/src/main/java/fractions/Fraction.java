@@ -3,11 +3,35 @@ package fractions;
 public class Fraction {
   private int numerator;
   private int denominator;
-
+  private boolean valid = true;
+  
   public Fraction(int numerator, int denominator) {
     this.numerator = numerator;
     this.denominator = denominator;
     reduce();
+  }
+
+  public Fraction(String fractionString) {
+    String [] splitString = fractionString.split("/");
+    
+    try {
+      this.numerator = Integer.parseInt(splitString[0].strip());
+      this.denominator = Integer.parseInt(splitString[1].strip());
+      reduce();
+    } catch(Exception e) {
+      this.valid = false;
+      System.out.println("String provided is not valid for conversion to a fraction");
+      this.numerator = 1;
+      this.denominator = 0;
+    } 
+  }
+
+  public boolean isValid() {
+    if(this.denominator == 0) {
+      this.valid = false;
+    }
+
+    return this.valid;
   }
 
   public int getNumerator() {
@@ -24,8 +48,12 @@ public class Fraction {
   }
 
   public void divideBy(int a) {
-    this.denominator *= a;
-    reduce();
+    if (a == 0) {
+      this.valid = false;
+    } else {
+      this.denominator *= a;
+      reduce();
+    }
   }
 
   public String toString() {
