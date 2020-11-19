@@ -5,7 +5,7 @@ public class Fraction {
     return a;
   }
 
-  public static boolean isMultiple(int number, int multiple) {
-    return number % multiple == 0;
+  public static boolean isMultiple(int a, int b) {
+    return a % b == 0;
   }
 }
