@@ -6,7 +6,9 @@ public class MyInteger {
     int bigger = biggest(a, b);
     int smaller = smallest(a, b);
 
-    if(bigger % smaller == 0){
+    if(bigger == 0 || smaller == 0) {
+      answer = 0;
+    } else if (bigger % smaller == 0){
       answer = smaller;
     } else {
       for(int i = smaller / 2; i > 1; i --) {

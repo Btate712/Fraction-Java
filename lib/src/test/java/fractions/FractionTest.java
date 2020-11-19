@@ -49,4 +49,14 @@ class FractionTest {
       fraction3.divideBy(0);
       assertFalse(fraction3.isValid(), "should set valid flag to false when divide by zero is attempted");
     }
+
+    @Test void testInvert() {
+      Fraction fraction1 = new Fraction("2/3");
+      fraction1.invert();
+      assertEquals("3/2", fraction1.toString());
+
+      Fraction fraction2 = new Fraction(0, 1);
+      fraction2.invert();
+      assertFalse(fraction2.isValid(), "should set valid flag to false when invert is called on fraction with numerator of zero");
+    }
 }

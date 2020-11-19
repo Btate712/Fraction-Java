@@ -56,13 +56,27 @@ public class Fraction {
     }
   }
 
+  public void invert() {
+    if(this.numerator == 0) {
+      this.valid = false;
+    } else {
+    int temp = this.numerator;
+    this.numerator = this.denominator;
+    this.denominator = temp;
+    }
+  }
+
   public String toString() {
     return String.format("%d/%d", numerator, denominator);
   }
 
   private void reduce() {
-    int dividend = MyInteger.lowestCommonDenominator(this.numerator, this.denominator);
-    this.numerator /= dividend;
-    this.denominator /= dividend;
+    if(this.isValid()) {
+      int dividend = MyInteger.lowestCommonDenominator(this.numerator, this.denominator);
+      if(dividend != 0) {
+        this.numerator /= dividend;
+        this.denominator /= dividend;
+      }
+    }
   }
 }
