@@ -18,10 +18,13 @@ public class Fraction {
     return this.denominator;
   }
 
+  public String toString() {
+    return String.format("%d/%d", numerator, denominator);
+  }
+
   private void reduce() {
     int dividend = MyInteger.lowestCommonDenominator(this.numerator, this.denominator);
     this.numerator /= dividend;
     this.denominator /= dividend;
-    System.out.printf("dividend: %d, fraction: %d/%d\n", dividend, this.numerator, this.denominator);
   }
 }
