@@ -15,7 +15,27 @@ class FractionTest {
     }
 
     @Test void testStringOutput() {
-      Fraction fraction1 = new Fraction(5, 6);
-      assertEquals("5/6", fraction1.toString(), "should correctly return string representation of fraction");
+      Fraction fraction = new Fraction(5, 6);
+      assertEquals("5/6", fraction.toString(), "should correctly return string representation of fraction");
+    }
+
+    @Test void testMultiplication() {
+      Fraction fraction1 = new Fraction(4, 9);
+      fraction1.multiplyBy(2);
+      assertEquals("8/9", fraction1.toString(), "should correctly multiply without the need for reduction");
+
+      Fraction fraction2 = new Fraction(1, 6);
+      fraction2.multiplyBy(2);
+      assertEquals("1/3", fraction2.toString(), "should correctly multiply when reduction is required");
+    }
+
+    @Test void testDivision() {
+      Fraction fraction1 = new Fraction(4, 9);
+      fraction1.divideBy(2);
+      assertEquals("2/9", fraction1.toString(), "should correctly divide when reduction is required");
+
+      Fraction fraction2 = new Fraction(1, 6);
+      fraction2.divideBy(2);
+      assertEquals("1/12", fraction2.toString(), "should correctly divide without the need for reduction");
     }
 }

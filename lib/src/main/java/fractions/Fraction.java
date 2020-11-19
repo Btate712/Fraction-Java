@@ -18,6 +18,16 @@ public class Fraction {
     return this.denominator;
   }
 
+  public void multiplyBy(int a) {
+    this.numerator *= a;
+    reduce();
+  }
+
+  public void divideBy(int a) {
+    this.denominator *= a;
+    reduce();
+  }
+
   public String toString() {
     return String.format("%d/%d", numerator, denominator);
   }
