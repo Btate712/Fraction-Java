@@ -4,17 +4,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class FractionTest {
-    @Test void testLowestCommonDenominator() {
-      assertEquals(Fraction.lowestCommonDenominator(30, 20), 10, "lowestCommonDenominator of 30 and 20 should be 10");
-    }
+    @Test void testConstructor() {
+      Fraction fraction1 = new Fraction(2, 3);
+      assertEquals(2, fraction1.getNumerator(), "should return correct numerator for fraction that does not require reduction");
+      assertEquals(3, fraction1.getDenominator(), "should return correct denominator for fraction that does not require reduction");
 
-    @Test void testIsMultiple() {
-      assertTrue(Fraction.isMultiple(25, 5), "25 is a multiple of 5");
-      assertFalse(Fraction.isMultiple(10, 3), "10 is NOT a multiple of 3");
-    }    
-
-    @Test void testBiggest() {
-      assertEquals(Fraction.biggest(20, 30), 30, "30 is bigger than 20");
-      assertNotEquals(Fraction.biggest(20, 30), 20, "20 is NOT bigger than 30");
+      Fraction fraction2 = new Fraction(300, 600);
+      assertEquals(1, fraction2.getNumerator(), "should return correct numerator for fraction that requires reduction");
+      assertEquals(2, fraction2.getDenominator(), "should return correct denominator for fraction that requires reduction");
     }
 }

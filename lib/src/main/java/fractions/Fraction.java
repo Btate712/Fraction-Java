@@ -1,15 +1,27 @@
 package fractions;
 
 public class Fraction {
-  public static int lowestCommonDenominator(int a, int b) {
-    return a;
+  private int numerator;
+  private int denominator;
+
+  public Fraction(int numerator, int denominator) {
+    this.numerator = numerator;
+    this.denominator = denominator;
+    reduce();
   }
 
-  public static boolean isMultiple(int a, int b) {
-    return a % b == 0;
+  public int getNumerator() {
+    return this.numerator;
   }
 
-  public static int biggest(int a, int b) {
-    return a > b ? a : b;
+  public int getDenominator() {
+    return this.denominator;
+  }
+
+  private void reduce() {
+    int dividend = MyInteger.lowestCommonDenominator(this.numerator, this.denominator);
+    this.numerator /= dividend;
+    this.denominator /= dividend;
+    System.out.printf("dividend: %d, fraction: %d/%d\n", dividend, this.numerator, this.denominator);
   }
 }

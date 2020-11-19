@@ -34,3 +34,9 @@ tasks.named('test') {
     // Use junit platform for unit tests.
     useJUnitPlatform()
 }
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
