@@ -13,10 +13,18 @@ public class Fraction {
 
   public Fraction(String fractionString) {
     String [] splitString = fractionString.split("/");
-    
+    String [] wholeAndNumerator = splitString[0].split(" ");
+    int wholeNumber = 0;
+
     try {
+      if (wholeAndNumerator.length > 1) {
+        wholeNumber = Integer.parseInt(wholeAndNumerator[0]);
+        splitString[0] = wholeAndNumerator[1];
+      }
+
       this.numerator = Integer.parseInt(splitString[0].strip());
       this.denominator = Integer.parseInt(splitString[1].strip());
+      this.numerator = this.numerator + wholeNumber * this.denominator;
       reduce();
     } catch(Exception e) {
       this.valid = false;
@@ -54,7 +62,7 @@ public class Fraction {
     if(this.denominator == 0) {
       this.valid = false;
     }
-    
+
     reduce();
   }
 
@@ -65,6 +73,11 @@ public class Fraction {
       this.denominator *= a;
       reduce();
     }
+  }
+
+  public void divideBy(Fraction a) {
+    a.invert();
+    this.multiplyBy(a);
   }
 
   public void addTo(int a) {

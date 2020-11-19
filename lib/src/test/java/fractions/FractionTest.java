@@ -19,6 +19,10 @@ class FractionTest {
 
       Fraction fraction4 = new Fraction("invalid fraction");
       assertFalse(fraction4.isValid(), "should set valid flag to false if invalid input is used to initialize fraction");
+
+      Fraction fraction5 = new Fraction("1 4/5");
+      assertEquals(9, fraction5.getNumerator(), "should correctly assign numerator when initialized with a mixed number string");
+      assertEquals(5, fraction5.getDenominator(), "should correctly assign denominator when initialized with a mixed number string");
     }
 
     @Test void testStringOutput() {
@@ -61,6 +65,11 @@ class FractionTest {
       Fraction fraction3 = new Fraction(1, 2);
       fraction3.divideBy(0);
       assertFalse(fraction3.isValid(), "should set valid flag to false when divide by zero is attempted");
+
+      Fraction fraction4 = new Fraction("2/3");
+      Fraction fraction5 = new Fraction("1/2");
+      fraction4.divideBy(fraction5);
+      assertEquals("4/3", fraction4.toString(), "should correctly divide by another fraction");
     }
 
     @Test void testAddition() {
